@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="@drawable/gradient_purple">
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome!"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:id="@+id/welcomeDesc"
+        android:layout_width="318dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="You're all set. Tap the button below to begin your personality quiz."
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/startQuizButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Let's Start!"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="12dp"
+        android:background="@drawable/rounded_button" />
+</LinearLayout>

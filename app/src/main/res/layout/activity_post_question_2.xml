@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/purple"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/ageQuestion"
+        android:layout_width="329dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="If yes, what did you do when you saw them?"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/textAnswer"
+        android:layout_width="326dp"
+        android:layout_height="150dp"
+        android:background="@drawable/box_background"
+        android:gravity="top"
+        android:hint="Type your answer here..."
+        android:inputType="textMultiLine"
+        android:maxLines="5"
+        android:padding="16dp"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/nextBtnQ2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:backgroundTint="#800080"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="32dp"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp"
+        android:background="@drawable/rounded_button"/>
+</LinearLayout>

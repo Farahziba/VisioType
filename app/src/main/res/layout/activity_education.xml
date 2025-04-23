@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/purple"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/educationQuestion"
+        android:layout_width="303dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="What is the highest level of education you have completed?"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <RadioGroup
+        android:id="@+id/educationOptions"
+        android:layout_width="305dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            style="@style/OptionButton"
+            android:text="Secondary School (SPM or below)" />
+
+        <RadioButton
+            style="@style/OptionButton"
+            android:text="Pre-University (Matriculation, Form 6, Diploma, or Equivalent)" />
+
+        <RadioButton
+            style="@style/OptionButton"
+            android:text="Bachelor’s Degree" />
+
+        <RadioButton
+            style="@style/OptionButton"
+            android:text="Graduate Degree (Master’s, Doctorate, etc.)" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/nextBtnEducation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="32dp"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp"
+        android:background="@drawable/rounded_button" />
+</LinearLayout>

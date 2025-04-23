@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_purple">
+
+    <TextView
+        android:id="@+id/introductionText"
+        android:layout_width="379dp"
+        android:layout_height="145dp"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:padding="24dp"
+        android:text="Before we unlock your personality,\nlet’s get to know you a little!"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp" />
+</RelativeLayout>
