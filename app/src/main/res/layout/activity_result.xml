@@ -1,42 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="24dp"
-    android:background="@drawable/gradient_purple">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_purple"
+    android:padding="24dp">
 
     <TextView
-        android:id="@+id/welcomeText"
+        android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="You’ve reached the end! Here’s your personality reveal!"
-        android:textSize="28sp"
+        android:text="Here’s your personality reveal!"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="24dp"
+        android:textColor="@android:color/white"/>
+
+    <ImageView
+        android:id="@+id/resultImageView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerCrop" />
 
     <TextView
-        android:id="@+id/welcomeDesc"
-        android:layout_width="318dp"
+        android:id="@+id/resultDescription"
+        android:layout_width="338dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Thanks for playing!"
+        android:layout_marginBottom="32dp"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/startQuizButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wanna try again?!"
+        android:text="Play Again"
         android:textColor="#FFFFFF"
         android:layout_marginTop="20dp"
-        android:paddingHorizontal="30dp"
+        android:paddingHorizontal="35dp"
         android:paddingVertical="12dp"
         android:background="@drawable/rounded_button" />
+
 </LinearLayout>

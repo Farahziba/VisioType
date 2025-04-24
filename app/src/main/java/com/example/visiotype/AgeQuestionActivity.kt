@@ -6,25 +6,56 @@ import android.widget.Button
 import android.widget.RadioGroup
 import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.SetOptions
 
 class AgeQuestionActivity : AppCompatActivity() {
+
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_age_group)
 
+        // Retrieve the random document ID passed from the first activity
+        val randomDocId = intent.getStringExtra("DOCUMENT_ID")
+
+        firestore = FirebaseFirestore.getInstance()
+        auth = FirebaseAuth.getInstance()
+
         val ageOptions = findViewById<RadioGroup>(R.id.ageOptions)
         val nextButton = findViewById<Button>(R.id.nextBtnAge)
 
         nextButton.setOnClickListener {
-            // Get the selected age option
             val selectedAge = findViewById<RadioButton>(ageOptions.checkedRadioButtonId)?.text.toString()
 
-            // Optionally, store the selected age in SharedPreferences or a database.
+            // Save the selected age to Firestore
+            if (randomDocId != null) {
+                saveAgeToFirestore(selectedAge, randomDocId)
+            }
 
             // Navigate to the GenderQuestionActivity
             val intent = Intent(this, GenderQuestionActivity::class.java)
+            intent.putExtra("DOCUMENT_ID", randomDocId)  // Passing the document ID
             startActivity(intent)
         }
+    }
+
+    private fun saveAgeToFirestore(age: String, id: String) {
+        val userId = auth.currentUser?.uid ?: id
+        val ageData = mapOf("age_group" to age)
+
+        val userDocRef = firestore.collection("users").document(userId)
+
+        // Use merge to add age without overwriting other fields
+        userDocRef.set(ageData, SetOptions.merge())
+            .addOnSuccessListener {
+                // Successfully saved
+            }
+            .addOnFailureListener { e ->
+                e.printStackTrace()
+            }
     }
 }
