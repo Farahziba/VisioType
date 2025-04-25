@@ -39,6 +39,9 @@ class QuizQuestionActivity : AppCompatActivity() {
         Triple(R.drawable.q10, "What do you see first in this image?", listOf("The glass of water", "The sunset")),
     )
 
+    private var hasNotificationShown = false  // Flag to track if the notification has been shown
+    private var notificationStartTime: Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_question)
@@ -56,14 +59,18 @@ class QuizQuestionActivity : AppCompatActivity() {
         showQuestion()
 
         option1.setOnClickListener {
-            if (randomDocId != null) {
-                handleAnswer(1, randomDocId)
+            randomDocId?.let { handleAnswer(1, it) }
+            if (currentQuestionIndex in 4..8 && !hasNotificationShown) {
+                randomDocId?.let { it1 -> showNotification(it1) }
+                hasNotificationShown = true  // Set the flag to true after showing the notification
             }
         }
 
         option2.setOnClickListener {
-            if (randomDocId != null) {
-                handleAnswer(2, randomDocId)
+            randomDocId?.let { handleAnswer(2, it) }
+            if (currentQuestionIndex in 4..8 && !hasNotificationShown) {
+                randomDocId?.let { it1 -> showNotification(it1) }
+                hasNotificationShown = true  // Set the flag to true after showing the notification
             }
         }
     }
@@ -132,6 +139,49 @@ class QuizQuestionActivity : AppCompatActivity() {
             }
             .addOnFailureListener { e ->
                 e.printStackTrace()
+            }
+    }
+
+    private fun showNotification(id: String) {
+        notificationStartTime = System.currentTimeMillis()
+        val notificationDialog = CustomNotificationDialogFragment(1,id)
+        notificationDialog.setOnNotificationInteractionListener(object : CustomNotificationDialogFragment.NotificationInteractionListener {
+            override fun onNotificationClick() {
+                val responseTime = System.currentTimeMillis() - notificationStartTime
+                logUserInteraction("notification_click", "security_warning", id, responseTime)
+            }
+
+            override fun onNotificationDismiss() {
+                logUserInteraction("notification_dismissed", "security_warning", id)
+            }
+        })
+
+        notificationDialog.show(supportFragmentManager, "FirstWarningDialog")
+        logUserInteraction("notification_shown", "security_warning", id)
+    }
+
+    private fun logUserInteraction(action: String, notificationType: String, id: String, responseTime: Long? = null) {
+        val userId = auth.currentUser?.uid ?: id  // Use 'guest' if no user is logged in
+        val actionData = hashMapOf<String, Any>(
+            "action" to action,
+            "timestamp" to System.currentTimeMillis(),
+            "notification_type" to notificationType
+        )
+
+        responseTime?.let {
+            actionData["response_time"] = it
+        }
+
+        firestore.collection("user_interactions")
+            .document(userId)
+            .collection("warnings")
+            .document(notificationType)
+            .set(actionData)
+            .addOnSuccessListener {
+                // Handle success
+            }
+            .addOnFailureListener {
+                // Handle failure
             }
     }
 }

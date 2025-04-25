@@ -2,22 +2,23 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
-    android:padding="24dp">
+    android:background="#C5000000">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:layout_margin="7dp">
+        android:layout_margin="7dp"
+        android:padding="24dp">
 
         <!-- Warning Icon -->
         <ImageView
             android:id="@+id/warningIcon"
-            android:layout_width="113dp"
-            android:layout_height="77dp"
+            android:layout_width="66dp"
+            android:layout_height="50dp"
             android:layout_marginTop="32dp"
+            android:alpha="0.9"
             android:src="@drawable/icon_warning" />
 
         <!-- Title -->
@@ -26,8 +27,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Danger"
-            android:textColor="#FFFFFF"
+            android:textColor="#D7D7D7"
             android:textSize="20sp"
+            android:layout_marginTop="16dp"
+            android:alpha="0.95"
             android:textStyle="bold"/>
 
         <!-- Description -->
@@ -38,6 +41,7 @@
             android:layout_marginTop="20dp"
             android:text="This application has been flagged for harmful behavior. Continuing without a scan may expose your device to serious security risks. Here's what might happen:"
             android:textColor="#CCCCCC"
+            android:alpha="0.95"
             android:textSize="14sp" />
 
         <!-- Warning Items -->
@@ -58,6 +62,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginEnd="16dp"
+                    android:alpha="0.95"
                     android:src="@drawable/folder" />
 
                 <LinearLayout
@@ -70,7 +75,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Access and edit files via computer"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#D7D7D7"
+                        android:alpha="0.95"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -79,6 +85,7 @@
                         android:layout_height="wrap_content"
                         android:text="Access and edit files on this device via a connected computer"
                         android:textColor="#CCCCCC"
+                        android:alpha="0.95"
                         android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -94,6 +101,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginEnd="16dp"
+                    android:alpha="0.95"
                     android:src="@drawable/android" />
 
                 <LinearLayout
@@ -106,8 +114,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Install apps without approval"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#D7D7D7"
                         android:textSize="14sp"
+                        android:alpha="0.95"
                         android:textStyle="bold" />
 
                     <TextView
@@ -115,6 +124,7 @@
                         android:layout_height="wrap_content"
                         android:text="Malicious apps can be installed via computer without your knowledge"
                         android:textColor="#CCCCCC"
+                        android:alpha="0.95"
                         android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -130,6 +140,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginEnd="16dp"
+                    android:alpha="0.95"
                     android:src="@drawable/recording" />
 
                 <LinearLayout
@@ -142,8 +153,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Monitor device usage"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#D7D7D7"
                         android:textSize="14sp"
+                        android:alpha="0.95"
                         android:textStyle="bold" />
 
                     <TextView
@@ -151,6 +163,7 @@
                         android:layout_height="wrap_content"
                         android:text="Data like usage statistics, screen activities may be captured"
                         android:textColor="#CCCCCC"
+                        android:alpha="0.95"
                         android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -166,6 +179,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginEnd="16dp"
+                    android:alpha="0.95"
                     android:src="@drawable/document" />
 
                 <LinearLayout
@@ -178,8 +192,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Access personal device information"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#D7D7D7"
                         android:textSize="14sp"
+                        android:alpha="0.95"
                         android:textStyle="bold" />
 
                     <TextView
@@ -187,6 +202,7 @@
                         android:layout_height="wrap_content"
                         android:text="IMEI, contacts, and other personal info might be exposed"
                         android:textColor="#CCCCCC"
+                        android:alpha="0.95"
                         android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -201,9 +217,9 @@
             android:textColor="#CCCCCC"
             android:textSize="14sp"
             android:paddingStart="8dp"
+            android:alpha="0.95"
             android:button="@drawable/custom_checkbox"
             android:layout_marginTop="16dp"/>
-
 
         <!-- Button Row -->
         <LinearLayout
@@ -222,7 +238,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/round_reject"
                 android:text="Cancel"
-                android:textColor="#FFFFFF" />
+                android:alpha="0.95"
+                android:textColor="#E6E6E6" />
 
             <Button
                 android:id="@+id/btnOk"
@@ -232,7 +249,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/round_red"
                 android:text="OK"
-                android:textColor="#FFFFFF" />
+                android:alpha="0.95"
+                android:textColor="#E6E6E6" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -19,8 +19,8 @@
 
     <ImageView
         android:id="@+id/resultImageView"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="190dp"
+        android:layout_height="193dp"
         android:layout_marginBottom="16dp"
         android:scaleType="centerCrop" />
 
@@ -28,7 +28,7 @@
         android:id="@+id/resultDescription"
         android:layout_width="338dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="25dp"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="16sp" />
@@ -37,11 +37,11 @@
         android:id="@+id/startQuizButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play Again"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rounded_button"
         android:paddingHorizontal="35dp"
         android:paddingVertical="12dp"
-        android:background="@drawable/rounded_button" />
+        android:text="Play Again"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>

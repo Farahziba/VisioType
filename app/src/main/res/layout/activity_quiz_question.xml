@@ -9,14 +9,14 @@
 
     <ImageView
         android:id="@+id/questionImage"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="224dp"
+        android:layout_height="249dp"
         android:contentDescription="Question Image"
         android:scaleType="centerCrop" />
 
     <!-- Question Box -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="339dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/box_background"
@@ -25,7 +25,7 @@
 
         <TextView
             android:id="@+id/questionText"
-            android:layout_width="match_parent"
+            android:layout_width="298dp"
             android:layout_height="wrap_content"
             android:text="What do you see first in this image?"
             android:textAlignment="center"
@@ -36,11 +36,11 @@
     <!-- Option 1 Box -->
     <Button
         android:id="@+id/option1"
-        android:layout_width="match_parent"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/rounded_button"
-        android:padding="16dp"
+        android:padding="10dp"
         android:text="Option 1"
         android:textColor="#FFFFFF"
         android:textSize="16sp" />
@@ -48,11 +48,11 @@
     <!-- Option 2 Box -->
     <Button
         android:id="@+id/option2"
-        android:layout_width="match_parent"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_button"
-        android:padding="16dp"
+        android:padding="10dp"
         android:text="Option 2"
         android:textColor="#FFFFFF"
         android:textSize="16sp" />

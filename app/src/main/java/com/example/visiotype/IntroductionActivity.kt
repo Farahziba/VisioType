@@ -16,14 +16,14 @@ class IntroductionActivity : AppCompatActivity() {
 
         FirebaseApp.initializeApp(this)
         // Generate a random document ID
-
         val randomDocId = UUID.randomUUID().toString()
+
         // Set the XML layout for the introduction screen
         setContentView(R.layout.activity_introduction)
 
         // After a delay of 5 seconds, start the AgeGroupActivity
         Handler().postDelayed({
-            val intent = Intent(this@IntroductionActivity, AgeQuestionActivity::class.java)
+            val intent = Intent(this@IntroductionActivity, ConsentFormActivity::class.java)
             intent.putExtra("DOCUMENT_ID", randomDocId)  // Passing the document ID
             startActivity(intent)
             finish() // Prevent going back to the intro screen

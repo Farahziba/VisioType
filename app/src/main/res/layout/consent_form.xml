@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/purple_quiz"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Scrollable Content with White Background -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Consent Form"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="Purpose:\nThis experience is part of a research study focused on understanding how people interact with mobile content.\n\nWhat You'll Do:\n• Answer a few short questions\n• Interact with a quick image-based experience\n• Engage with the on-screen messages\nTime: 10–15 minutes\n\nPrivacy:\n• No personal data is collected\n• Responses are anonymous and confidential\n• You may exit at any time\n\nBy continuing, you confirm:\n• You are 14 years or older\n• You agree to take part voluntarily"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/consentCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I agree to participate voluntarily." />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp">
+
+                <Button
+                    android:id="@+id/declineButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Decline" />
+
+                <Button
+                    android:id="@+id/agreeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Agree"
+                    android:layout_marginStart="16dp"
+                    android:enabled="false" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
