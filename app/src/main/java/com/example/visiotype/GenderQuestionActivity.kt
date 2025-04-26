@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.RadioGroup
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.auth.FirebaseAuth
@@ -28,17 +29,24 @@ class GenderQuestionActivity : AppCompatActivity() {
         val nextButton = findViewById<Button>(R.id.nextBtnGender)
 
         nextButton.setOnClickListener {
-            val selectedGender = findViewById<RadioButton>(genderOptions.checkedRadioButtonId)?.text.toString()
+            // Check if a radio button is selected
+            val selectedGenderId = genderOptions.checkedRadioButtonId
+            if (selectedGenderId != -1) {  // If a radio button is selected
+                val selectedGender = findViewById<RadioButton>(selectedGenderId)?.text.toString()
 
-            // Save gender to Firestore
-            if (randomDocId != null) {
-                saveGenderToFirestore(selectedGender, randomDocId)
+                // Save gender to Firestore
+                if (randomDocId != null) {
+                    saveGenderToFirestore(selectedGender, randomDocId)
+                }
+
+                // Move to next activity
+                val intent = Intent(this, EducationQuestionActivity::class.java)
+                intent.putExtra("DOCUMENT_ID", randomDocId)  // Passing the document ID
+                startActivity(intent)
+            } else {
+                // Show a message to inform the user to select a gender
+                Toast.makeText(this, "Please select your gender", Toast.LENGTH_SHORT).show()
             }
-
-            // Move to next activity
-            val intent = Intent(this, EducationQuestionActivity::class.java)
-            intent.putExtra("DOCUMENT_ID", randomDocId)  // Passing the document ID
-            startActivity(intent)
         }
     }
 

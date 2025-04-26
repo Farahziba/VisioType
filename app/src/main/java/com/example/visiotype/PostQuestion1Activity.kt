@@ -2,7 +2,6 @@ package com.example.visiotype
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.RadioGroup
 import android.widget.RadioButton
@@ -32,29 +31,36 @@ class PostQuestion1Activity : AppCompatActivity() {
         val nextButton = findViewById<Button>(R.id.nextBtnQ1)
 
         nextButton.setOnClickListener {
-            val selectedOption = findViewById<RadioButton>(postQ1Options.checkedRadioButtonId)?.text.toString()
+            // Check if a radio button is selected
+            val selectedOptionId = postQ1Options.checkedRadioButtonId
+            if (selectedOptionId != -1) {  // If a radio button is selected
+                val selectedOption = findViewById<RadioButton>(selectedOptionId)?.text.toString()
 
-            // Save the selected age to Firestore
-            if (randomDocId != null) {
-                saveQ1ToFirestore(selectedOption, randomDocId)
+                // Save the selected option to Firestore
+                if (randomDocId != null) {
+                    saveQ1ToFirestore(selectedOption, randomDocId)
+                }
+
+                // Navigate to the next activity
+                val intent = Intent(this, PostQuestion2Activity::class.java)
+                intent.putExtra("DOCUMENT_ID", randomDocId)  // Passing the document ID
+                intent.putExtra("FINAL_RESULT", finalType)
+                startActivity(intent)
+            } else {
+                // Show a message to inform the user to select an option
+                Toast.makeText(this, "Please select an option", Toast.LENGTH_SHORT).show()
             }
-
-            // Navigate to the GenderQuestionActivity
-            val intent = Intent(this, PostQuestion2Activity::class.java)
-            intent.putExtra("DOCUMENT_ID", randomDocId)  // Passing the document ID
-            intent.putExtra("FINAL_RESULT", finalType)
-            startActivity(intent)
         }
     }
 
     private fun saveQ1ToFirestore(q1: String, id: String) {
         val userId = auth.currentUser?.uid ?: id
-        val ageData = mapOf("post_quest_1" to q1)
+        val data = mapOf("post_quest_1" to q1)
 
         val userDocRef = firestore.collection("users").document(userId)
 
-        // Use merge to add age without overwriting other fields
-        userDocRef.set(ageData, SetOptions.merge())
+        // Use merge to add data without overwriting other fields
+        userDocRef.set(data, SetOptions.merge())
             .addOnSuccessListener {
                 // Successfully saved
             }

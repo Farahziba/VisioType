@@ -21,13 +21,13 @@ class PostGameActivity : AppCompatActivity() {
         val randomDocId = intent.getStringExtra("DOCUMENT_ID")
         val finalType = intent.getStringExtra("FINAL_RESULT")
 
-        // After a delay of 5 seconds, start the AgeGroupActivity
+        // After a delay of 4 seconds, start the AgeGroupActivity
         Handler().postDelayed({
             val intent = Intent(this@PostGameActivity, PostQuestion1Activity::class.java)
             intent.putExtra("DOCUMENT_ID", randomDocId)  // Passing the document ID
             intent.putExtra("FINAL_RESULT", finalType)
             startActivity(intent)
             finish() // Prevent going back to the intro screen
-        }, 8000) // 5000ms = 5 seconds
+        }, 4000) // 4000ms = 4 seconds
     }
 }

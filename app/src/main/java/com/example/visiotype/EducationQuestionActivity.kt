@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.RadioGroup
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.auth.FirebaseAuth
@@ -29,17 +30,24 @@ class EducationQuestionActivity : AppCompatActivity() {
         val nextButton = findViewById<Button>(R.id.nextBtnEducation)
 
         nextButton.setOnClickListener {
-            val selectedEducation = findViewById<RadioButton>(educationOptions.checkedRadioButtonId)?.text.toString()
+            // Check if a radio button is selected
+            val selectedEducationId = educationOptions.checkedRadioButtonId
+            if (selectedEducationId != -1) {  // If a radio button is selected
+                val selectedEducation = findViewById<RadioButton>(selectedEducationId)?.text.toString()
 
-            // Save to Firestore
-            if (randomDocId != null) {
-                saveEducationToFirestore(selectedEducation,randomDocId)
+                // Save the education level to Firestore
+                if (randomDocId != null) {
+                    saveEducationToFirestore(selectedEducation, randomDocId)
+                }
+
+                // Navigate to the WelcomeActivity
+                val intent = Intent(this, WelcomeActivity::class.java)
+                intent.putExtra("DOCUMENT_ID", randomDocId)  // Passing the document ID
+                startActivity(intent)
+            } else {
+                // Show a message to inform the user to select an education level
+                Toast.makeText(this, "Please select your education level", Toast.LENGTH_SHORT).show()
             }
-
-            // Navigate to WelcomeActivity
-            val intent = Intent(this, WelcomeActivity::class.java)
-            intent.putExtra("DOCUMENT_ID", randomDocId)  // Passing the document ID
-            startActivity(intent)
         }
     }
 
@@ -49,9 +57,10 @@ class EducationQuestionActivity : AppCompatActivity() {
 
         val userDocRef = firestore.collection("users").document(userId)
 
+        // Update the user document by merging the education field
         userDocRef.set(educationData, SetOptions.merge())
             .addOnSuccessListener {
-                // Successfully saved
+                // Education saved successfully
             }
             .addOnFailureListener { e ->
                 e.printStackTrace()

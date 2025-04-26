@@ -21,12 +21,12 @@ class IntroductionActivity : AppCompatActivity() {
         // Set the XML layout for the introduction screen
         setContentView(R.layout.activity_introduction)
 
-        // After a delay of 5 seconds, start the AgeGroupActivity
+        // After a delay of 4 seconds, start the AgeGroupActivity
         Handler().postDelayed({
             val intent = Intent(this@IntroductionActivity, ConsentFormActivity::class.java)
             intent.putExtra("DOCUMENT_ID", randomDocId)  // Passing the document ID
             startActivity(intent)
             finish() // Prevent going back to the intro screen
-        }, 5000) // 5000ms = 5 seconds
+        }, 4000) // 4000ms = 4 seconds
     }
 }

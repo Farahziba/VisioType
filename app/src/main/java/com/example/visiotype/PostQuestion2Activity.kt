@@ -2,7 +2,6 @@ package com.example.visiotype
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -35,14 +34,15 @@ class PostQuestion2Activity : AppCompatActivity() {
 
             if (answer.isEmpty()) {
                 Toast.makeText(this, "Please enter your answer.", Toast.LENGTH_SHORT).show()
+            } else if (answer.isBlank()) {
+                Toast.makeText(this, "Answer cannot be just spaces.", Toast.LENGTH_SHORT).show()
             } else {
-
-                // Save the selected age to Firestore
+                // Save the answer to Firestore
                 if (randomDocId != null) {
                     saveQ1ToFirestore(answer, randomDocId)
                 }
 
-                // Navigate to the GenderQuestionActivity
+                // Navigate to the ThankYouActivity
                 val intent = Intent(this, ThankYouActivity::class.java)
                 intent.putExtra("DOCUMENT_ID", randomDocId)  // Passing the document ID
                 intent.putExtra("FINAL_RESULT", finalType)
@@ -53,12 +53,12 @@ class PostQuestion2Activity : AppCompatActivity() {
 
     private fun saveQ1ToFirestore(q2: String, id: String) {
         val userId = auth.currentUser?.uid ?: id
-        val ageData = mapOf("post_quest_2" to q2)
+        val data = mapOf("post_quest_2" to q2)
 
         val userDocRef = firestore.collection("users").document(userId)
 
-        // Use merge to add age without overwriting other fields
-        userDocRef.set(ageData, SetOptions.merge())
+        // Use merge to add data without overwriting other fields
+        userDocRef.set(data, SetOptions.merge())
             .addOnSuccessListener {
                 // Successfully saved
             }

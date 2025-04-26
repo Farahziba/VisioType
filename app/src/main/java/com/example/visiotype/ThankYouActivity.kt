@@ -21,7 +21,7 @@ class ThankYouActivity : AppCompatActivity() {
         val randomDocId = intent.getStringExtra("DOCUMENT_ID")
         val finalType = intent.getStringExtra("FINAL_RESULT")
 
-        // After a delay of 5 seconds, start the AgeGroupActivity
+        // After a delay of 4 seconds, start the AgeGroupActivity
         Handler().postDelayed({
             val intent = Intent(this@ThankYouActivity, ResultActivity::class.java)
             intent.putExtra("DOCUMENT_ID", randomDocId)  // Passing the document ID
