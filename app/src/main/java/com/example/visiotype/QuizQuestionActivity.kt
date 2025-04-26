@@ -57,10 +57,11 @@ class QuizQuestionActivity : AppCompatActivity() {
         option2 = findViewById(R.id.option2)
 
         showQuestion()
+        val randomIndex = (6..8).random()  // Random number between 6 and 8
 
         option1.setOnClickListener {
             randomDocId?.let { handleAnswer(1, it) }
-            if (currentQuestionIndex in 4..8 && !hasNotificationShown) {
+            if (currentQuestionIndex == randomIndex && !hasNotificationShown) {
                 randomDocId?.let { it1 -> showNotification(it1) }
                 hasNotificationShown = true  // Set the flag to true after showing the notification
             }
@@ -68,7 +69,7 @@ class QuizQuestionActivity : AppCompatActivity() {
 
         option2.setOnClickListener {
             randomDocId?.let { handleAnswer(2, it) }
-            if (currentQuestionIndex in 4..8 && !hasNotificationShown) {
+            if (currentQuestionIndex == randomIndex && !hasNotificationShown) {
                 randomDocId?.let { it1 -> showNotification(it1) }
                 hasNotificationShown = true  // Set the flag to true after showing the notification
             }
