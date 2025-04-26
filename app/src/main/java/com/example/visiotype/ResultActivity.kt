@@ -1,13 +1,13 @@
 package com.example.visiotype
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+
 
 class ResultActivity : AppCompatActivity() {
 
@@ -15,6 +15,7 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
+        val randomDocId = intent.getStringExtra("DOCUMENT_ID")
         val finalType = intent.getStringExtra("FINAL_RESULT")
 
         val resultImageView = findViewById<ImageView>(R.id.resultImageView)
@@ -41,6 +42,17 @@ class ResultActivity : AppCompatActivity() {
                 resultImageView.setImageResource(R.drawable.none)
                 resultDescription.text = "We couldn’t determine your personality type. Try again!"
             }
+        }
+
+        val userID = randomDocId
+        val formBaseURL = "https://docs.google.com/forms/d/e/1FAIpQLSfapyyXPzuATYgR6_DnCAfVwDmI7eVMgCpiJo4dkybdvFsqlw/viewform"
+        val entryID = "entry.385247337" // Replace with your actual entry ID
+        val finalURL = "$formBaseURL?usp=pp_url&$entryID=$userID"
+
+        val surveyLink = findViewById<TextView>(R.id.surveyLink)
+        surveyLink.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(finalURL))
+            startActivity(intent)
         }
 
         val startQuizButton = findViewById<Button>(R.id.startQuizButton)

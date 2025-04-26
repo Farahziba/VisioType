@@ -8,17 +8,16 @@
         android:allowBackup="true"
         android:label="VisioType"
         android:supportsRtl="true"
+        android:icon="@mipmap/ic_launcher"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
 
-        <activity android:name=".SplashActivity"
+        <activity android:name=".IntroductionActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".IntroductionActivity"
-            android:exported="false"/>
         <activity android:name=".ConsentFormActivity" />
         <activity android:name=".AgeQuestionActivity" />
         <activity android:name=".GenderQuestionActivity" />
